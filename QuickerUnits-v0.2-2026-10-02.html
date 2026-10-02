@@ -120,7 +120,7 @@ footer b{color:var(--ink);font-weight:600}
 
 /* ---------- arrival (QuickerBridge qbArrive) ---------- */
 @keyframes qbArrive{from{opacity:0;transform:translateY(14px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-.rv{animation:qbArrive .45s cubic-bezier(.2,.75,.25,1) both;animation-delay:var(--d,0s)}
+.rv{animation:qbArrive .9s cubic-bezier(.2,.75,.25,1) both;animation-delay:var(--d,0s)}
 
 @media(max-width:1500px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:1100px){.topbar{padding:0 18px}main{padding:18px}.bible-hint{display:none}}
@@ -139,12 +139,12 @@ footer b{color:var(--ink);font-weight:600}
   </header>
 
   <main>
-    <details class="bible rv" style="--d:0s" id="bible" open>
+    <details class="bible rv" style="--d:.08s" id="bible" open>
       <summary><span class="bible-title" data-i18n="bibleTitle"></span><span class="bible-hint" data-i18n="bibleHint"></span></summary>
       <div id="bible-body"></div>
     </details>
 
-    <div class="toolbar rv" style="--d:0s">
+    <div class="toolbar rv" style="--d:.16s">
       <div class="tip" data-i18n-html="tip"></div>
       <div class="tools">
         <span class="label" data-i18n="precision"></span>
@@ -156,7 +156,7 @@ footer b{color:var(--ink);font-weight:600}
 
     <section class="grid" id="main-grid" aria-label="Units"></section>
 
-    <div class="more-wrap rv" style="--d:0s"><button class="more" id="more" type="button" aria-expanded="false" aria-controls="bonus"><span class="plus">+</span><span id="more-label"></span></button></div>
+    <div class="more-wrap rv" style="--d:.8s"><button class="more" id="more" type="button" aria-expanded="false" aria-controls="bonus"><span class="plus">+</span><span id="more-label"></span></button></div>
 
     <section id="bonus" class="hidden">
       <div class="bonus-head" data-i18n="bonusHead"></div>
@@ -164,7 +164,7 @@ footer b{color:var(--ink);font-weight:600}
     </section>
   </main>
 
-  <footer class="rv" style="--d:0s">
+  <footer class="rv" style="--d:.9s">
     <div data-i18n-html="footL"></div>
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -203,7 +203,7 @@ const T = {
     resetDone: "Valeurs par défaut rétablies",
     computed: "Calculé",
     clear: "Vider la colonne",
-    footL: "<b>QuickerUnits</b> · facteurs exacts selon les définitions internationales (1959) et NIST SP 811 · g<sub>n</sub> = 9,806 65 m/s² pour le kilogramme-force (kgf).",
+    footL: "<b>QuickerUnits</b> · facteurs exacts selon les définitions internationales (1959) et NIST SP 811.",
     sepSI: "SI", sepIMP: "Impérial"
   },
   en: {
@@ -226,7 +226,7 @@ const T = {
     resetDone: "Defaults restored",
     computed: "Computed",
     clear: "Clear column",
-    footL: "<b>QuickerUnits</b> · exact factors from the 1959 international definitions and NIST SP 811 · g<sub>n</sub> = 9.80665 m/s² for the kilogram-force (kgf).",
+    footL: "<b>QuickerUnits</b> · exact factors from the 1959 international definitions and NIST SP 811.",
     sepSI: "SI", sepIMP: "Imperial"
   }
 };
@@ -260,15 +260,15 @@ const CATS = [
       imp: [u("in", IN, "po", "pouce", "inch", "in"), u("ft", FT, "pi", "pied", "foot", "ft"), u("yd", YD, "vg", "verge", "yard", "yd"), u("mi", MI, "mi", "mille", "mile")] }] },
   { id: "force", icon: "force", dim: "[M L T⁻²]", name: { fr: "Force", en: "Force" },
     groups: [{ def: ["kN", 100],
-      si: [u("N", 1, "N", "newton", "newton"), u("kN", 1e3, "kN", "kilonewton", "kilonewton"), u("MN", 1e6, "MN", "méganewton", "meganewton"), u("kgf", G, "kgf", "kilogramme-force", "kilogram-force")],
+      si: [u("N", 1, "N", "newton", "newton"), u("kN", 1e3, "kN", "kilonewton", "kilonewton"), u("MN", 1e6, "MN", "méganewton", "meganewton")],
       imp: [u("lbf", LBF, "lb", "livre-force", "pound-force", "lbf"), u("kip", KIP, "kip", "kilolivre (1000 lb)", "kilopound (1000 lb)")] }] },
   { id: "lineload", icon: "lineload", dim: "[M T⁻²]", name: { fr: "Charge linéique", en: "Line load" },
     groups: [{ def: ["kNm", 10],
-      si: [u("Nm", 1, "N/m", "newton/mètre", "newton/metre"), u("kNm", 1e3, "kN/m", "= N/mm", "= N/mm"), u("kgfm", G, "kgf/m", "kilogramme-force/m", "kilogram-force/m")],
+      si: [u("Nm", 1, "N/m", "newton/mètre", "newton/metre"), u("kNm", 1e3, "kN/m", "= N/mm", "= N/mm")],
       imp: [u("lbin", LBF / IN, "lb/po", "livre/pouce · pli", "pound/inch · pli", "lb/in"), u("plf", LBF / FT, "lb/pi", "livre/pied · plf", "pound/foot · plf", "lb/ft"), u("kipin", KIP / IN, "kip/po", "kip/pouce · kli", "kip/inch · kli", "kip/in"), u("kipft", KIP / FT, "kip/pi", "kip/pied · klf", "kip/foot · klf", "kip/ft")] }] },
   { id: "moment", icon: "moment", dim: "[M L² T⁻²]", name: { fr: "Moment", en: "Moment" },
     groups: [{ def: ["kNm", 250],
-      si: [u("Nmm", 1e-3, "N·mm", "newton-millimètre", "newton-millimetre"), u("Nm", 1, "N·m", "newton-mètre", "newton-metre"), u("kNm", 1e3, "kN·m", "kilonewton-mètre", "kilonewton-metre"), u("kgfm", G, "kgf·m", "kilogramme-force-mètre", "kilogram-force metre")],
+      si: [u("Nmm", 1e-3, "N·mm", "newton-millimètre", "newton-millimetre"), u("Nm", 1, "N·m", "newton-mètre", "newton-metre"), u("kNm", 1e3, "kN·m", "kilonewton-mètre", "kilonewton-metre")],
       imp: [u("lbin", LBF * IN, "lb·po", "livre-pouce", "pound-inch", "lb·in"), u("lbft", LBF * FT, "lb·pi", "livre-pied", "pound-foot", "lb·ft"), u("kipin", KIP * IN, "kip·po", "kip-pouce", "kip-inch", "kip·in"), u("kipft", KIP * FT, "kip·pi", "kip-pied", "kip-foot", "kip·ft")] }] },
   { id: "pressure", icon: "pressure", dim: "[M L⁻¹ T⁻²]", name: { fr: "Pression / contrainte", en: "Pressure / stress" },
     groups: [{ def: ["MPa", 25],
@@ -522,7 +522,7 @@ function renderBible() {
 }
 
 function colHTML(c, idx, baseDelay) {
-  const d = baseDelay + idx * 0.04;
+  const d = baseDelay + idx * 0.08;
   let html = `<article class="col rv" style="--d:${d.toFixed(2)}s" data-cat="${c.id}">
     <div class="col-head">
       <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true">${ICONS[c.icon]}</svg></div>
@@ -534,13 +534,13 @@ function colHTML(c, idx, baseDelay) {
     html += `<div class="group" data-gid="${g.gid}">`;
     if (g.title) html += `<div class="group-title">${esc(g.title[S.lang])}</div>`;
     html += `<div class="pill"></div>`;
-    const row = (unit, k) => `<div class="row rv" style="--d:${(d + 0.06 + k * 0.015).toFixed(2)}s" data-u="${unit.id}">
+    const row = (unit, k) => `<div class="row rv" style="--d:${(d + 0.12 + k * 0.03).toFixed(2)}s" data-u="${unit.id}">
         <div class="cell"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="${esc(unit.n[S.lang])} (${esc(sym(unit))})"><div class="fx"></div></div>
         <button class="unit" type="button" title="${esc(unit.n[S.lang])}"><b>${esc(sym(unit))}</b><small>${esc(unit.n[S.lang])}</small></button>
       </div>`;
     let k = 0;
     g.si.forEach(unit => { html += row(unit, k++); });
-    html += `<div class="sep rv" style="--d:${(d + 0.06 + k * 0.015).toFixed(2)}s"><span class="si">▲ ${t("sepSI")}</span><span class="imp">${t("sepIMP")} ▼</span></div>`;
+    html += `<div class="sep rv" style="--d:${(d + 0.12 + k * 0.03).toFixed(2)}s"><span class="si">▲ ${t("sepSI")}</span><span class="imp">${t("sepIMP")} ▼</span></div>`;
     g.imp.forEach(unit => { html += row(unit, k++); });
     html += `</div>`;
   });
@@ -548,7 +548,7 @@ function colHTML(c, idx, baseDelay) {
 }
 
 function renderGrids() {
-  $("#main-grid").innerHTML = CATS.map((c, i) => colHTML(c, i, 0.08)).join("");
+  $("#main-grid").innerHTML = CATS.map((c, i) => colHTML(c, i, 0.2)).join("");
   $("#bonus-grid").innerHTML = BONUS.map((c, i) => colHTML(c, i, 0.05)).join("");
   document.querySelectorAll(".group").forEach(gEl => {
     const gid = gEl.dataset.gid;
