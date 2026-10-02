@@ -1,26 +1,28 @@
 # QuickerUnits
 
-Convertisseur d’unités pensé pour le génie civil et le calcul de structures, en français et en anglais.
+Unit converter built for civil and structural engineering, in English and French.
 
 **Version 0.2 · Anthony Chéruel · 2026-10-02**
 
-## Principe
+**Live app:** https://acfakkoh.github.io/QuickerUnits/
 
-Un seul fichier HTML, sans aucune dépendance : il s’ouvre dans n’importe quel navigateur et fonctionne entièrement hors ligne. Il est aussi publié sur GitHub Pages.
+## Concept
 
-## Fonctionnalités
+A single HTML file with no dependencies: it opens in any browser and works fully offline. It is also published on GitHub Pages.
 
-- 7 colonnes principales : longueur, force, masse linéique, moment, pression/contrainte, aire, masse.
-- 7 colonnes additionnelles : volume, densité, vitesse, accélération, température, superficie, charge linéique.
-- Toutes les cases sont modifiables ; la case source est mise en évidence et tout se convertit en direct.
-- Unités SI d’abord, puis impériales, avec une séparation visible.
-- Chiffres significatifs cohérents (Auto, 3, 4 ou 6) et notation française (virgule décimale, espace des milliers).
-- Facteurs de conversion affichés sous chaque case.
-- Tableau des équivalences courantes, cliquable.
-- Expressions acceptées (`2*600`, `1,5e3`), navigation au clavier, copie d’un clic.
+## Features
 
-## Utilisation
+- 7 main columns: length, force, line load, moment, pressure/stress, area, mass.
+- 6 extra columns: volume, density (per volume, per area, per length), speed, acceleration, temperature, land area.
+- Every box is editable; the source box is highlighted and everything converts live.
+- SI units first, then imperial, with a clear divider.
+- Consistent significant figures (Auto, 3, 4 or 6) and French notation in French mode (decimal comma, space thousands separator).
+- Conversion factors shown under each box.
+- Clickable table of common equivalences.
+- Expressions accepted (`2*600`, `1.5e3`), keyboard navigation, one-click copy.
 
-Ouvrir `QuickerUnits-v0.2-2026-10-02.html` dans un navigateur.
+## Usage
 
-Les facteurs sont exacts (définitions internationales de 1959, NIST SP 811 ; g = 9,806 65 m/s²).
+Open `QuickerUnits-v0.2-2026-10-02.html` in a browser. `index.html` simply redirects to the latest version.
+
+Factors are exact (1959 international definitions, NIST SP 811; g = 9.80665 m/s²).

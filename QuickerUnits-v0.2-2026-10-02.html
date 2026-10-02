@@ -120,42 +120,17 @@ footer b{color:var(--ink);font-weight:600}
 
 /* ---------- arrival (QuickerBridge qbArrive) ---------- */
 @keyframes qbArrive{from{opacity:0;transform:translateY(14px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-.rv{animation:qbArrive .75s cubic-bezier(.2,.75,.25,1) both;animation-delay:var(--d,0s)}
-.prearrive .rv{animation-play-state:paused}
-
-/* ---------- splash ---------- */
-#splash{position:fixed;inset:0;z-index:100;background:radial-gradient(1200px 600px at 50% 40%,#0d2a3d,#061520 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#fff;transition:opacity .55s ease,transform .6s cubic-bezier(.2,.7,.2,1);cursor:pointer}
-#splash.out{opacity:0;transform:scale(1.035);pointer-events:none}
-.sp-logo{display:flex;align-items:center;gap:16px;font-size:3rem;font-weight:700;letter-spacing:-.02em;opacity:0;animation:qbArrive .8s cubic-bezier(.2,.75,.25,1) .1s both}
-.sp-logo .brand-mark{font-size:4.4rem}.sp-logo .brand-mark>span{font-size:2rem;right:-9px;bottom:-6px}
-.sp-logo span.u{font-weight:300;color:#9cdfcf}
-.sp-tag{font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:#9cc2d2;opacity:0;animation:qbArrive .8s cubic-bezier(.2,.75,.25,1) .35s both}
-.sp-ruler{width:min(420px,80vw);height:26px;opacity:0;animation:qbArrive .6s ease .5s both}
-.sp-ruler line{stroke:#2f6680;stroke-width:1.2}
-.sp-ruler .bar{stroke:#56e0bb;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.3s cubic-bezier(.6,.05,.2,1) .6s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.sp-ticker{height:24px;font-family:Cambria,Georgia,serif;font-size:1.05rem;color:#ffd99e;position:relative;width:min(420px,80vw);text-align:center}
-.sp-ticker span{position:absolute;inset:0;opacity:0;animation:tick .62s ease both}
-@keyframes tick{0%{opacity:0;transform:translateY(8px)}30%,70%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
-.sp-skip{position:absolute;right:22px;bottom:18px;font-size:.72rem;letter-spacing:.1em;color:#5f8699;text-transform:uppercase}
+.rv{animation:qbArrive .45s cubic-bezier(.2,.75,.25,1) both;animation-delay:var(--d,0s)}
 
 @media(max-width:1500px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:1100px){.topbar{padding:0 18px}main{padding:18px}.bible-hint{display:none}}
 @media(max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bible-grid{grid-template-columns:1fr}.bible-col+.bible-col{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:4px}.release-info{display:none}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.topbar{height:68px;padding:0 16px}.brand{font-size:1.2rem}.brand small{display:none}.brand-mark{font-size:2rem}main{padding:14px 16px}.eq{font-size:.92rem}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media print{.topbar,.toolbar,.more-wrap,.col-clear,#splash,.toast{display:none!important}body{background:#fff}.col,.bible{box-shadow:none}}
+@media print{.topbar,.toolbar,.more-wrap,.col-clear,.toast{display:none!important}body{background:#fff}.col,.bible{box-shadow:none}}
   </style>
 </head>
-<body class="prearrive">
-  <div id="splash" role="presentation">
-    <div class="sp-logo"><span class="brand-mark">Q<span>↗</span></span><div>Quicker<span class="u">Units</span></div></div>
-    <div class="sp-tag" id="sp-tag"></div>
-    <svg class="sp-ruler" viewBox="0 0 420 26" aria-hidden="true"><line x1="10" y1="20" x2="10" y2="8"/><line x1="52" y1="20" x2="52" y2="13"/><line x1="94" y1="20" x2="94" y2="13"/><line x1="136" y1="20" x2="136" y2="13"/><line x1="178" y1="20" x2="178" y2="13"/><line x1="220" y1="20" x2="220" y2="6"/><line x1="262" y1="20" x2="262" y2="13"/><line x1="304" y1="20" x2="304" y2="13"/><line x1="346" y1="20" x2="346" y2="13"/><line x1="388" y1="20" x2="388" y2="13"/><line x1="410" y1="20" x2="410" y2="8"/><line class="bar" x1="10" y1="20" x2="410" y2="20"/></svg>
-    <div class="sp-ticker" id="sp-ticker"></div>
-    <div class="sp-skip" id="sp-skip"></div>
-  </div>
-
-  <header class="topbar rv" style="--d:.02s">
+<body>
+  <header class="topbar rv" style="--d:0s">
     <div class="brand"><span class="brand-mark">Q<span>↗</span></span><div>Quicker<span>Units</span><small data-i18n="brandSub"></small></div></div>
     <div class="header-right">
       <div class="release-info"><b id="release-version"></b><small id="release-date"></small></div>
@@ -164,12 +139,12 @@ footer b{color:var(--ink);font-weight:600}
   </header>
 
   <main>
-    <details class="bible rv" style="--d:.12s" id="bible" open>
+    <details class="bible rv" style="--d:0s" id="bible" open>
       <summary><span class="bible-title" data-i18n="bibleTitle"></span><span class="bible-hint" data-i18n="bibleHint"></span></summary>
       <div id="bible-body"></div>
     </details>
 
-    <div class="toolbar rv" style="--d:.22s">
+    <div class="toolbar rv" style="--d:0s">
       <div class="tip" data-i18n-html="tip"></div>
       <div class="tools">
         <span class="label" data-i18n="precision"></span>
@@ -181,7 +156,7 @@ footer b{color:var(--ink);font-weight:600}
 
     <section class="grid" id="main-grid" aria-label="Units"></section>
 
-    <div class="more-wrap rv" style="--d:.9s"><button class="more" id="more" type="button" aria-expanded="false" aria-controls="bonus"><span class="plus">+</span><span id="more-label"></span></button></div>
+    <div class="more-wrap rv" style="--d:0s"><button class="more" id="more" type="button" aria-expanded="false" aria-controls="bonus"><span class="plus">+</span><span id="more-label"></span></button></div>
 
     <section id="bonus" class="hidden">
       <div class="bonus-head" data-i18n="bonusHead"></div>
@@ -189,7 +164,7 @@ footer b{color:var(--ink);font-weight:600}
     </section>
   </main>
 
-  <footer class="rv" style="--d:1s">
+  <footer class="rv" style="--d:0s">
     <div data-i18n-html="footL"></div>
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -229,9 +204,7 @@ const T = {
     computed: "Calculé",
     clear: "Vider la colonne",
     footL: "<b>QuickerUnits</b> · facteurs exacts selon les définitions internationales (1959) et NIST SP 811 · g<sub>n</sub> = 9,806 65 m/s² pour le kilogramme-force (kgf).",
-    sepSI: "SI", sepIMP: "Impérial",
-    tagline: "Convertisseur d’unités · génie civil",
-    skip: "Cliquer pour passer"
+    sepSI: "SI", sepIMP: "Impérial"
   },
   en: {
     brandSub: "UNIT CONVERTER · CIVIL ENGINEERING",
@@ -254,9 +227,7 @@ const T = {
     computed: "Computed",
     clear: "Clear column",
     footL: "<b>QuickerUnits</b> · exact factors from the 1959 international definitions and NIST SP 811 · g<sub>n</sub> = 9.80665 m/s² for the kilogram-force (kgf).",
-    sepSI: "SI", sepIMP: "Imperial",
-    tagline: "Unit converter · civil engineering",
-    skip: "Click to skip"
+    sepSI: "SI", sepIMP: "Imperial"
   }
 };
 
@@ -291,10 +262,10 @@ const CATS = [
     groups: [{ def: ["kN", 100],
       si: [u("N", 1, "N", "newton", "newton"), u("kN", 1e3, "kN", "kilonewton", "kilonewton"), u("MN", 1e6, "MN", "méganewton", "meganewton"), u("kgf", G, "kgf", "kilogramme-force", "kilogram-force")],
       imp: [u("lbf", LBF, "lb", "livre-force", "pound-force", "lbf"), u("kip", KIP, "kip", "kilolivre (1000 lb)", "kilopound (1000 lb)")] }] },
-  { id: "linmass", icon: "linmass", dim: "[M L⁻¹]", name: { fr: "Masse linéique", en: "Mass per length" },
-    groups: [{ id: "dlin", def: ["kgm", 1],
-      si: [u("gm", 1e-3, "g/m", "gramme/mètre", "gram/metre"), u("kgm", 1, "kg/m", "kilogramme/mètre", "kilogram/metre")],
-      imp: [u("lbin", LB / IN, "lb/po", "livre/pouce", "pound/inch", "lb/in"), u("lbft", LB / FT, "lb/pi", "livre/pied", "pound/foot", "lb/ft"), u("lbyd", LB / YD, "lb/vg", "livre/verge", "pound/yard", "lb/yd")] }] },
+  { id: "lineload", icon: "lineload", dim: "[M T⁻²]", name: { fr: "Charge linéique", en: "Line load" },
+    groups: [{ def: ["kNm", 10],
+      si: [u("Nm", 1, "N/m", "newton/mètre", "newton/metre"), u("kNm", 1e3, "kN/m", "= N/mm", "= N/mm"), u("kgfm", G, "kgf/m", "kilogramme-force/m", "kilogram-force/m")],
+      imp: [u("lbin", LBF / IN, "lb/po", "livre/pouce · pli", "pound/inch · pli", "lb/in"), u("plf", LBF / FT, "lb/pi", "livre/pied · plf", "pound/foot · plf", "lb/ft"), u("kipin", KIP / IN, "kip/po", "kip/pouce · kli", "kip/inch · kli", "kip/in"), u("kipft", KIP / FT, "kip/pi", "kip/pied · klf", "kip/foot · klf", "kip/ft")] }] },
   { id: "moment", icon: "moment", dim: "[M L² T⁻²]", name: { fr: "Moment", en: "Moment" },
     groups: [{ def: ["kNm", 250],
       si: [u("Nmm", 1e-3, "N·mm", "newton-millimètre", "newton-millimetre"), u("Nm", 1, "N·m", "newton-mètre", "newton-metre"), u("kNm", 1e3, "kN·m", "kilonewton-mètre", "kilonewton-metre"), u("kgfm", G, "kgf·m", "kilogramme-force-mètre", "kilogram-force metre")],
@@ -325,7 +296,10 @@ const BONUS = [
         imp: [u("lbft3", LB / FT ** 3, "lb/pi³", "pcf", "pcf", "lb/ft³"), u("lbin3", LB / IN ** 3, "lb/po³", "livre/pouce³", "pound/in³", "lb/in³"), u("lbyd3", LB / YD ** 3, "lb/vg³", "livre/verge³", "pound/yd³", "lb/yd³")] },
       { id: "dsurf", title: { fr: "Surfacique", en: "Per area" }, def: ["kgm2", 100],
         si: [u("gm2", 1e-3, "g/m²", "gramme/m²", "gram/m²"), u("kgm2", 1, "kg/m²", "kilogramme/m²", "kilogram/m²")],
-        imp: [u("ozft2", OZ / FT ** 2, "oz/pi²", "once/pied²", "ounce/ft²", "oz/ft²"), u("lbft2", LB / FT ** 2, "lb/pi²", "livre/pied²", "pound/ft²", "lb/ft²"), u("lbin2", LB / IN ** 2, "lb/po²", "livre/pouce²", "pound/in²", "lb/in²")] }
+        imp: [u("ozft2", OZ / FT ** 2, "oz/pi²", "once/pied²", "ounce/ft²", "oz/ft²"), u("lbft2", LB / FT ** 2, "lb/pi²", "livre/pied²", "pound/ft²", "lb/ft²"), u("lbin2", LB / IN ** 2, "lb/po²", "livre/pouce²", "pound/in²", "lb/in²")] },
+      { id: "dlin", title: { fr: "Linéique", en: "Per length" }, def: ["kgm", 1],
+      si: [u("gm", 1e-3, "g/m", "gramme/mètre", "gram/metre"), u("kgm", 1, "kg/m", "kilogramme/mètre", "kilogram/metre")],
+      imp: [u("lbin", LB / IN, "lb/po", "livre/pouce", "pound/inch", "lb/in"), u("lbft", LB / FT, "lb/pi", "livre/pied", "pound/foot", "lb/ft"), u("lbyd", LB / YD, "lb/vg", "livre/verge", "pound/yard", "lb/yd")] }
     ] },
   { id: "speed", icon: "speed", dim: "[L T⁻¹]", name: { fr: "Vitesse", en: "Speed" },
     groups: [{ def: ["kmh", 100],
@@ -342,11 +316,7 @@ const BONUS = [
   { id: "land", icon: "land", dim: "[L²]", name: { fr: "Superficie (terrain)", en: "Land area" },
     groups: [{ def: ["ha", 1],
       si: [u("m2", 1, "m²", "mètre carré", "square metre"), u("are", 100, "a", "are", "are"), u("ha", 1e4, "ha", "hectare", "hectare"), u("km2", 1e6, "km²", "kilomètre carré", "square kilometre")],
-      imp: [u("ft2", FT * FT, "pi²", "pied carré", "square foot", "ft²"), u("acre", 4046.8564224, "acre", "acre", "acre"), u("arp", ARPENT2, "arpent²", "arpent carré (Qc) ≈", "square arpent (QC) ≈"), u("mi2", MI * MI, "mi²", "mille carré", "square mile")] }] },
-  { id: "lineload", icon: "lineload", dim: "[M T⁻²]", name: { fr: "Charge linéique", en: "Line load" },
-    groups: [{ def: ["kNm", 10],
-      si: [u("Nm", 1, "N/m", "newton/mètre", "newton/metre"), u("kNm", 1e3, "kN/m", "= N/mm", "= N/mm"), u("kgfm", G, "kgf/m", "kilogramme-force/m", "kilogram-force/m")],
-      imp: [u("lbin", LBF / IN, "lb/po", "livre/pouce · pli", "pound/inch · pli", "lb/in"), u("plf", LBF / FT, "lb/pi", "livre/pied · plf", "pound/foot · plf", "lb/ft"), u("kipin", KIP / IN, "kip/po", "kip/pouce · kli", "kip/inch · kli", "kip/in"), u("kipft", KIP / FT, "kip/pi", "kip/pied · klf", "kip/foot · klf", "kip/ft")] }] }
+      imp: [u("ft2", FT * FT, "pi²", "pied carré", "square foot", "ft²"), u("acre", 4046.8564224, "acre", "acre", "acre"), u("arp", ARPENT2, "arpent²", "arpent carré (Qc) ≈", "square arpent (QC) ≈"), u("mi2", MI * MI, "mi²", "mille carré", "square mile")] }] }
 ];
 
 /* the "bible" — each line loads its left-hand side into the matching column */
@@ -552,7 +522,7 @@ function renderBible() {
 }
 
 function colHTML(c, idx, baseDelay) {
-  const d = baseDelay + idx * 0.07;
+  const d = baseDelay + idx * 0.04;
   let html = `<article class="col rv" style="--d:${d.toFixed(2)}s" data-cat="${c.id}">
     <div class="col-head">
       <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true">${ICONS[c.icon]}</svg></div>
@@ -564,13 +534,13 @@ function colHTML(c, idx, baseDelay) {
     html += `<div class="group" data-gid="${g.gid}">`;
     if (g.title) html += `<div class="group-title">${esc(g.title[S.lang])}</div>`;
     html += `<div class="pill"></div>`;
-    const row = (unit, k) => `<div class="row rv" style="--d:${(d + 0.12 + k * 0.035).toFixed(2)}s" data-u="${unit.id}">
+    const row = (unit, k) => `<div class="row rv" style="--d:${(d + 0.06 + k * 0.015).toFixed(2)}s" data-u="${unit.id}">
         <div class="cell"><input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="${esc(unit.n[S.lang])} (${esc(sym(unit))})"><div class="fx"></div></div>
         <button class="unit" type="button" title="${esc(unit.n[S.lang])}"><b>${esc(sym(unit))}</b><small>${esc(unit.n[S.lang])}</small></button>
       </div>`;
     let k = 0;
     g.si.forEach(unit => { html += row(unit, k++); });
-    html += `<div class="sep rv" style="--d:${(d + 0.12 + k * 0.035).toFixed(2)}s"><span class="si">▲ ${t("sepSI")}</span><span class="imp">${t("sepIMP")} ▼</span></div>`;
+    html += `<div class="sep rv" style="--d:${(d + 0.06 + k * 0.015).toFixed(2)}s"><span class="si">▲ ${t("sepSI")}</span><span class="imp">${t("sepIMP")} ▼</span></div>`;
     g.imp.forEach(unit => { html += row(unit, k++); });
     html += `</div>`;
   });
@@ -578,7 +548,7 @@ function colHTML(c, idx, baseDelay) {
 }
 
 function renderGrids() {
-  $("#main-grid").innerHTML = CATS.map((c, i) => colHTML(c, i, 0.3)).join("");
+  $("#main-grid").innerHTML = CATS.map((c, i) => colHTML(c, i, 0.08)).join("");
   $("#bonus-grid").innerHTML = BONUS.map((c, i) => colHTML(c, i, 0.05)).join("");
   document.querySelectorAll(".group").forEach(gEl => {
     const gid = gEl.dataset.gid;
@@ -768,42 +738,16 @@ function setLang(l) {
 
 window.addEventListener("resize", () => moveAllPills(true));
 
-/* ===================== boot + splash ===================== */
+/* ===================== boot ===================== */
 renderStatic();
 renderGrids();
 
 function arrive() {
-  document.body.classList.remove("prearrive");
   requestAnimationFrame(() => moveAllPills(true));
   setTimeout(() => moveAllPills(true), 900);
 }
 
-const splash = $("#splash");
-const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-let seen = false;
-try { seen = sessionStorage.getItem("qu-splash") === "1"; sessionStorage.setItem("qu-splash", "1"); } catch { /* ignore */ }
-if (reduce || seen) {
-  splash.remove();
-  arrive();
-} else {
-  $("#sp-tag").textContent = t("tagline");
-  $("#sp-skip").textContent = t("skip");
-  const facts = S.lang === "fr"
-    ? ["1 po = 25,4 mm", "1 kip = 4,448 kN", "1 ksi = 6,895 MPa", "1 kip·pi = 1,356 kN·m"]
-    : ["1 in = 25.4 mm", "1 kip = 4.448 kN", "1 ksi = 6.895 MPa", "1 kip·ft = 1.356 kN·m"];
-  const tick = $("#sp-ticker");
-  facts.forEach((f, i) => setTimeout(() => { tick.innerHTML = `<span>${f}</span>`; }, 650 + i * 520));
-  let gone = false;
-  const close = () => {
-    if (gone) return; gone = true;
-    splash.classList.add("out");
-    arrive();
-    setTimeout(() => splash.remove(), 650);
-  };
-  splash.addEventListener("click", close);
-  document.addEventListener("keydown", close, { once: true });
-  setTimeout(close, 2900);
-}
+arrive();
 })();
 </script>
 </body>
