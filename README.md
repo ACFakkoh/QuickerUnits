@@ -2,7 +2,7 @@
 
 Unit converter built for civil and structural engineering, in English and French.
 
-**Version 0.3 · Anthony Chéruel · 2026-10-06**
+**Version 0.4 · Anthony Chéruel · 2026-10-06**
 
 **Live app:** https://acfakkoh.github.io/QuickerUnits/
 
@@ -13,7 +13,8 @@ A single HTML file with no dependencies: it opens in any browser and works fully
 ## Features
 
 - 7 main columns: length, force, line load, moment, pressure/stress, area, mass.
-- 6 extra columns: volume, density (per volume, per area, per length), speed, acceleration, temperature, land area.
+- 9 extra columns: volume, density (per volume, per area, per length), moment of inertia I, section modulus S, stiffness K, speed, acceleration, temperature, land area. I and S include the CISC handbook units (10⁶ mm⁴, 10³ mm³).
+- Quick convert bar (press `/`): type `25 ksi to MPa`, `3/4 in` or `100 °C to °F` and get the answer instantly; Enter opens the matching column.
 - Every box is editable; the source box is highlighted and everything converts live.
 - SI units first, then imperial, with a clear divider.
 - Consistent significant figures and French notation in French mode (decimal comma, space thousands separator).
@@ -23,6 +24,6 @@ A single HTML file with no dependencies: it opens in any browser and works fully
 
 ## Usage
 
-Open `QuickerUnits-v0.3-2026-10-06.html` in a browser. `index.html` simply redirects to the latest version.
+Open `QuickerUnits-v0.4-2026-10-06.html` in a browser. `index.html` simply redirects to the latest version.
 
 Factors are exact (1959 international definitions, NIST SP 811; g = 9.80665 m/s²).
