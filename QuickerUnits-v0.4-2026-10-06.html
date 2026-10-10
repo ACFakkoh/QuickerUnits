@@ -926,5 +926,47 @@ function arrive() {
 arrive();
 })();
 </script>
+<!-- update check: compares this page to the live root (index.html) -->
+<style>
+.qu-upd{position:fixed;left:50%;bottom:72px;transform:translate(-50%,14px);opacity:0;display:flex;align-items:center;gap:12px;background:#007f78;color:#fff;padding:9px 10px 9px 18px;border-radius:999px;font:500 .88rem 'Segoe UI',system-ui,sans-serif;box-shadow:0 10px 30px #0b1e2b55;z-index:60;transition:opacity .3s,transform .35s cubic-bezier(.2,.85,.2,1);max-width:calc(100vw - 32px)}
+.qu-upd.show{opacity:1;transform:translate(-50%,0)}
+.qu-upd a{background:#d9f5eb;color:#102d41;font-weight:650;text-decoration:none;padding:5px 14px;border-radius:999px;white-space:nowrap}
+.qu-upd button{background:none;border:0;color:#d9f5eb;font-size:1.1rem;cursor:pointer;padding:0 4px;line-height:1}
+@media print{.qu-upd{display:none!important}}
+</style>
+<script>
+(() => {
+  const MINE = "0.4";
+  if (!/^https?:$/.test(location.protocol)) return;          // offline file: nothing to check
+  if (/[?&]v=/.test(location.search)) history.replaceState(null, "", location.pathname + location.hash);
+  const newer = (a, b) => { const x = a.split(".").map(Number), y = b.split(".").map(Number);
+    for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d > 0; } return false; };
+  let shown = false, last = 0;
+  async function check() {
+    if (shown || Date.now() - last < 60000) return;
+    last = Date.now();
+    try {
+      const html = await (await fetch("./?t=" + last, { cache: "no-store" })).text();
+      const m = html.match(/QU_META\s*=\s*\{\s*version:\s*"([\d.]+)"/);
+      if (m && newer(m[1], MINE)) show(m[1]);
+    } catch { /* offline */ }
+  }
+  function show(v) {
+    shown = true;
+    const fr = (document.documentElement.lang || "fr").startsWith("fr");
+    const el = document.createElement("div");
+    el.className = "qu-upd"; el.setAttribute("role", "status");
+    el.innerHTML = `<span>${fr ? "Nouvelle version" : "New version"} <b>v${v}</b> ${fr ? "disponible" : "available"}</span>`
+      + `<a href="./?v=${v}">${fr ? "Mettre à jour" : "Update"}</a><button type="button" aria-label="${fr ? "Fermer" : "Close"}">×</button>`;
+    el.querySelector("button").onclick = () => el.remove();
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("show")));
+  }
+  check();
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) check(); });
+  addEventListener("focus", check);
+  setInterval(check, 15 * 60000);
+})();
+</script>
 </body>
 </html>

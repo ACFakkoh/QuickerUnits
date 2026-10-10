@@ -2,13 +2,13 @@
 
 Unit converter built for civil and structural engineering, in English and French.
 
-**Version 0.4 · Anthony Chéruel · 2026-10-06**
+**Version 0.5 · Anthony Chéruel · 2026-10-10**
 
 **Live app:** https://acfakkoh.github.io/QuickerUnits/
 
 ## Concept
 
-A single HTML file with no dependencies: it opens in any browser and works fully offline.
+A single dependency-free HTML file that works fully offline.
 
 ## Features
 
@@ -18,12 +18,12 @@ A single HTML file with no dependencies: it opens in any browser and works fully
 - Every box is editable; the source box is highlighted and everything converts live.
 - SI units first, then imperial, with a clear divider.
 - Consistent significant figures and French notation in French mode (decimal comma, space thousands separator).
-- Optional conversion factors under each box.
+- Conversion factors under each box (on by default).
 - Clickable table of common equivalences.
 - Expressions accepted (`2*600`, `1.5e3`), keyboard navigation, one-click copy.
 
 ## Usage
 
-Open `QuickerUnits-v0.4-2026-10-06.html` in a browser. `index.html` simply redirects to the latest version.
+The live link always serves the latest version; open pages show an update banner. Offline, open `index.html`.
 
 Factors are exact (1959 international definitions, NIST SP 811; g = 9.80665 m/s²).
